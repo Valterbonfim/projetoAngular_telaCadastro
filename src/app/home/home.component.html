@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Funcionarios</button>
+      <button mat-menu-item>Diretoria</button>
+    </mat-menu>
+
+    <span>Lista de Cadastro</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="button">
+    
+    <spa-funcionarios [valorInicial]="valor"></spa-funcionarios>
+
+    <button (click)="mudarValor()">Mudar Valor</button>
+    <button (click)="reiniciarValor()">Reiniciar Valor</button>
+    <button (click)="exibirTabela()">Exibir Tabela</button>
+    
+  </div>
+
+  <table *ngIf="exibeTabela">
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>E-mail</th>
+      <th>Função</th>
+    </tr>
+    <tr *ngFor="let funcionario of listaFuncionarios">
+      <td>{{funcionario.nome}}</td>
+      <td>{{funcionario.idade}}</td>
+      <td>{{funcionario.email}}</td>
+      <td>{{funcionario.curso}}</td>
+    </tr>
+  </table>     
+
+  <div>
+
+    <spa-diretores></spa-diretores>
+
+    
+  </div>
+
+  <table *ngIf="exibeTabela">
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>E-mail</th>
+      
+    </tr>
+    <tr *ngFor="let diretores of listaDiretores">
+      <td>{{diretores.nome}}</td>
+      <td>{{diretores.idade}}</td>
+      <td>{{diretores.email}}</td>
+      
+    </tr>
+  </table>     
+
+  
+  
+</body>
+</html>
+    
+
+  
+  
+  
